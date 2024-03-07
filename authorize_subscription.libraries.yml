@@ -1,0 +1,9 @@
+form-accept:
+  version: VERSION
+  js:
+    js/commerce_authnet.accept.form.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once
+    - commerce_authnet/form-authnet

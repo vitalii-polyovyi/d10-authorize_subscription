@@ -1,0 +1,8 @@
+name: 'Authorize Subscription'
+type: module
+description: 'Subscription payments for Authorize.net'
+package: uniwyze
+core_version_requirement: ^10
+dependencies:
+  - commerce_payment:commerce_payment
+  - commerce_recurring:commerce_recurring

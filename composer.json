@@ -1,0 +1,11 @@
+{
+    "name": "drupal/authorize_subscription",
+    "type": "drupal-custom-module",
+    "description": "Provides Commerce subscriptions integration for Authorize.net.",
+    "homepage": "https://drupal.org/project/commerce_authnet",
+    "license": "GPL-2.0-or-later",
+    "version": "0.1",
+    "require": {
+        "authorizenet/authorizenet": "2.0.2"
+    }
+}

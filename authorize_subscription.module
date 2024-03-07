@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Authorize Subscription module.
+ */
+
+/**
+ * Implements hook_form_alter
+ */
+function authorize_subscription_form_alter(&$form, &$form_state, $form_id){
+    if($form_id == 'commerce_subscription_product_variation_cancel_form'){   
+      $form['cancel_option'] = [
+        '#type' => 'radios',
+        '#title' => t('Cancellation options'),
+        '#options' => [
+          'scheduled' => t('End of the current billing period (@end_date)', [
+            '@end_date' => '',
+          ]),
+          'now' => t('Immediately'),
+        ],
+        '#default_value' => 'now',
+        '#weight' => -10,
+        '#access' => FALSE,
+      ];
+    }
+}
+
+
+function authorize_subscription_commerce_subscription_presave(\Drupal\Core\Entity\EntityInterface $entity){  
+    $state = $entity->getState()->value;
+    if($state == 'canceled'){
+        $subscrService = \Drupal::service('authorize_subscription.subscription');
+        $subscrService->cancel($entity);      
+    }
+}
